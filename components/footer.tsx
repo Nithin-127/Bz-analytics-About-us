@@ -1,166 +1,178 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { Linkedin, Twitter, Facebook, Instagram, Youtube, ArrowUp, MessageCircle } from "lucide-react";
+'use client';
+import { Linkedin, Facebook, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+  return (
+    <footer className="relative overflow-hidden bg-[#131313] pt-24 pb-40 font-sans text-white">
+      {/* Background Diagonal Lines Pattern */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 20px)`,
+          backgroundSize: '100% 100%',
+        }}
+      ></div>
 
-    return (
-        <footer className="relative bg-[#0a0a0a] text-white pt-0 pb-8 overflow-hidden">
-            {/* Background Diagonal Lines Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{
-                    backgroundImage: `repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 20px)`,
-                    backgroundSize: '100% 100%'
-                }}>
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <div className="flex flex-col gap-16 lg:flex-row lg:gap-[120px]">
+          {/* Left Column */}
+          <div className="flex-1 lg:max-w-[750px]">
+            {/* Header Text */}
+            <div className="mb-8">
+              <p className="mb-2 text-xl font-medium text-white">
+                Let&apos;s start working together
+              </p>
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-[54px]">
+                hello@bzanalytics.ai
+              </h2>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10 pt-10">
+            {/* Divider Line */}
+            <div className="mb-12 h-[1px] w-full bg-white/10"></div>
 
-                {/* Top Section: CTA and Subscribe Box */}
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
-                    {/* Top Call to Action */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="pt-0"
-                    >
-                        <p className="text-xl md:text-2xl text-white/90 font-medium m-0 p-0 leading-none">Let's start working together</p>
-                        <h2 className="text-4xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1] m-0 pt-2">
-                            hello@bzanalytics.ai
-                        </h2>
-                    </motion.div>
-
-                    {/* Newsletter Subscription (Uplifted) */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-full lg:w-[380px] lg:flex-shrink-0"
-                    >
-                        <div className="bg-[#0f0f0f] border border-white/5 p-8 rounded-3xl relative overflow-hidden group shadow-2xl">
-                            {/* The 3D-ish Megaphone Block */}
-                            <div className="mb-6 flex justify-center">
-                                <div className="w-28 h-24 bg-[#ff9100] rounded-tl-[40px] rounded-br-[40px] rounded-tr-[15px] rounded-bl-[15px] flex items-center justify-center relative shadow-[0_0_30px_rgba(255,145,0,0.2)]">
-                                    <div className="absolute inset-0 bg-white/10 rounded-[inherit]"></div>
-                                    <img
-                                        src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png"
-                                        alt="Subscribe"
-                                        className="w-16 h-16 drop-shadow-2xl relative z-10"
-                                    />
-                                </div>
-                            </div>
-
-                            <h3 className="text-2xl font-bold mb-1 text-center lg:text-left">Subscribe now</h3>
-                            <p className="text-white/40 mb-6 text-[11px] font-bold uppercase tracking-widest leading-none text-center lg:text-left">Empower Every Mind</p>
-
-                            <div className="space-y-4">
-                                <div className="relative">
-                                    <input
-                                        type="email"
-                                        placeholder="Email"
-                                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-3 focus:outline-none focus:border-white/20 transition-all text-sm font-medium"
-                                    />
-                                </div>
-                                <button className="w-full bg-[#ff9100] hover:bg-[#ff8000] text-black font-extrabold py-3 rounded-xl transition-all shadow-lg active:scale-95 text-sm uppercase tracking-widest">
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
+            {/* Content below Divider */}
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-4">
+              {/* Logo & Socials */}
+              <div className="flex flex-col justify-between">
+                {/* Logo Group */}
+                <div className="flex w-[280px] items-center">
+                  <Image
+                    src="/bq-logo.png"
+                    alt="Bz Analytics Logo"
+                    width={280}
+                    height={70}
+                    className="h-auto w-full object-contain"
+                  />
                 </div>
 
-                {/* Bottom Section: Brand and Navigation */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end"
-                >
-
-                    {/* Brand and Socials */}
-                    <div className="lg:col-span-5 flex flex-col gap-8">
-                        <div className="flex items-center gap-4">
-                            {/* Logo */}
-                            <div className="relative flex items-center gap-3">
-                                <div className="relative w-14 h-14">
-                                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                                        <path d="M20 20 L80 20 L80 80 L50 80 L20 50 Z" fill="#00e5ff" />
-                                        <path d="M50 80 L80 80 L80 50 Z" fill="#ffae00" opacity="0.8" />
-                                        <text x="32" y="62" fill="black" fontWeight="900" fontSize="40">B</text>
-                                    </svg>
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-3xl font-bold tracking-tighter">Bz</span>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-white">
-                                            <path d="M7 17L17 7M17 7H7M17 7V17" />
-                                        </svg>
-                                    </div>
-                                    <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/40">ANALYTICS</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Social Icons */}
-                        <div className="flex items-center gap-3">
-                            {[Linkedin, Twitter, Facebook, Instagram, Youtube].map((Icon, i) => (
-                                <a key={i} href="#" className="w-11 h-11 rounded-full bg-black border border-white/10 flex items-center justify-center hover:border-white/30 hover:scale-105 transition-all">
-                                    <Icon className="w-5 h-5 text-white fill-white/0" />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Navigation Links */}
-                    <div className="lg:col-span-7 grid grid-cols-2 gap-12">
-                        <div className="flex flex-col gap-3">
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Home</a>
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">About Us</a>
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Services</a>
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Success Stories</a>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Blogs</a>
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Careers</a>
-                            <a href="#" className="text-white/60 hover:text-white transition-colors font-medium">Contact Us</a>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Bottom Bar */}
-                <div className="mt-16 pt-8 border-t border-white/5 flex items-center">
-                    <button className="border border-white/20 px-4 py-2 text-[10px] font-black rounded uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-                        Light/Dark
-                    </button>
+                {/* Social Icons */}
+                <div className="mt-12 flex items-center gap-5">
+                  <a
+                    href="#"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black transition-colors hover:bg-white/10"
+                  >
+                    <Linkedin className="h-6 w-6 fill-white text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black transition-colors hover:bg-white/10"
+                  >
+                    <svg
+                      className="h-5 w-5 fill-current text-white"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black transition-colors hover:bg-white/10"
+                  >
+                    <Facebook className="h-6 w-6 fill-white text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black transition-colors hover:bg-white/10"
+                  >
+                    <Instagram className="h-6 w-6 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-black transition-colors hover:bg-white/10"
+                  >
+                    <FaYoutube className="h-6 w-6 text-white" />
+                  </a>
                 </div>
-            </div>
+              </div>
 
-            {/* Fixed Floating Buttons */}
-            <div className="fixed bottom-10 right-10 flex flex-col gap-5 z-50">
-                {/* Back to Top */}
-                <button
-                    onClick={scrollToTop}
-                    className="w-12 h-12 rounded-full border-2 border-[#ff9100] text-[#ff9100] flex items-center justify-center hover:bg-[#ff9100] hover:text-black transition-all group shadow-xl"
-                >
-                    <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-                </button>
-
-                {/* WhatsApp */}
-                <button className="w-14 h-14 rounded-full bg-black border border-white/20 flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-green-500/20 blur-lg rounded-full animate-pulse"></div>
-                        <MessageCircle className="w-8 h-8 text-green-500 fill-green-500/10 relative z-10" />
-                    </div>
-                </button>
+              {/* Links columns */}
+              <div className="grid grid-cols-2 gap-4 lg:ml-8">
+                <div className="flex flex-col gap-4 pt-2">
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    About Us
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Services
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Success Stories
+                  </a>
+                </div>
+                <div className="flex flex-col gap-4 pt-2">
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Blogs
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Careers
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xl font-medium tracking-wide text-gray-300 transition-colors hover:text-white"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* Right Column - Subscribe Box */}
+          <div className="mt-8 ml-auto w-full shrink-0 lg:-mt-10 lg:mb-auto lg:w-[300px]">
+            <div className="flex flex-col justify-center rounded-sm bg-[#0b0b0b] p-6 shadow-2xl sm:p-8">
+              {/* Subscribe Megaphone Image */}
+              <div className="mb-6 flex w-full justify-center">
+                <Image
+                  src="/footer-logo-new.png"
+                  alt="Subscribe Megaphone"
+                  width={160}
+                  height={112}
+                  className="object-contain"
+                />
+              </div>
+
+              <h3 className="mb-1 text-xl font-medium text-white">
+                Subscribe now
+              </h3>
+              <p className="mb-4 text-xs text-gray-400">Empower Every Mind</p>
+
+              <div className="space-y-3">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full rounded-sm border border-transparent bg-[#151515] px-4 py-2 text-sm text-white transition-colors placeholder:text-gray-500 focus:border-white/20 focus:outline-none"
+                />
+                <button className="w-full rounded-sm bg-[#ff9100] py-2 text-sm font-semibold text-black transition-colors hover:bg-[#e68200]">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

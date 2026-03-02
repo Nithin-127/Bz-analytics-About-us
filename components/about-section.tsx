@@ -1,110 +1,136 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+'use client';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { ArrowUp } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function AboutSection() {
-    return (
-        <section className="bg-black text-white pt-8 pb-20 px-6 md:px-12 lg:px-24">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-                {/* Left Side: Image Section */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full max-w-[600px] mx-auto lg:mx-0"
-                >
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
-                    {/* Main Image */}
-                    <div className="relative w-full h-full rounded-[4px] overflow-hidden shadow-2xl">
-                        <Image
-                            src="/about-main.png"
-                            alt="About BzAnalytics"
-                            fill
-                            className="object-contain lg:object-cover"
-                            priority
-                        />
-                    </div>
-                </motion.div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-                {/* Right Side: Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex flex-col gap-6"
-                >
-                    <div className="flex flex-col gap-2">
-                        <span className="text-sm font-bold tracking-widest text-zinc-400 uppercase">About Us</span>
-                    </div>
+  return (
+    <section className="bg-white px-6 pt-0 pb-20 text-black transition-colors duration-300 md:px-12 md:pt-8 lg:px-24 dark:bg-black dark:text-white">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2">
+        {/* Left Side: Image Section */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative mx-auto h-[400px] w-full max-w-[600px] md:h-[500px] lg:mx-0 lg:h-[600px]"
+        >
+          {/* Main Image */}
+          <div className="relative h-full w-full overflow-hidden rounded-[4px] shadow-2xl">
+            <Image
+              src="/about-main.png"
+              alt="About BzAnalytics"
+              fill
+              className="object-contain lg:object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
 
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                        Get to know about <br className="hidden sm:block" /> BzAnalytics
-                    </h2>
+        {/* Right Side: Text Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-col gap-6"
+        >
+          <div className="flex flex-col gap-2">
+            <span className="text-sm font-bold tracking-widest text-zinc-600 uppercase dark:text-zinc-400">
+              About Us
+            </span>
+          </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold text-orange-500 leading-snug">
-                        Digital Transformation Towards Web 4.0.
-                    </h3>
+          <h2 className="text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+            Get to know about <br className="hidden sm:block" /> BzAnalytics
+          </h2>
 
-                    <p className="text-zinc-400 leading-relaxed text-base md:text-lg">
-                        We believe that a big part of our difference is the adaptability and
-                        integrability of our solutions. It was a seismic moment for
-                        BzAnalytics that the decision by our organisation to launch our
-                        global hub at Dubai, BzAnalytics Information Technology. Our
-                        primary goals and objectives - as we live in the "Experience
-                        Economy" brand loyalty is increasingly becoming a thing of
-                        the past. We have been evolving with complex business issues
-                        is a key market differentiator.
-                    </p>
+          <h3 className="text-xl leading-snug font-bold text-orange-500 md:text-2xl">
+            Digital Transformation Towards Web 4.0.
+          </h3>
 
-                    {/* Signature & Profile Area */}
-                    <div className="flex flex-wrap items-center gap-6 mt-4">
-                        {/* Profile Picture Placeholder */}
-                        <div className="w-16 h-16 rounded-full border-2 border-orange-500 p-0.5 overflow-hidden relative">
-                            <Image
-                                src="/ceo-photo.png"
-                                alt="Beegum Pameela"
-                                fill
-                                className="object-cover rounded-full"
-                            />
-                        </div>
+          <p className="text-base leading-relaxed text-zinc-700 md:text-lg dark:text-zinc-400">
+            We believe that a big part of our difference is the adaptability and
+            integrability of our solutions. It was a seismic moment for
+            BzAnalytics that the decision by our organisation to launch our
+            global hub at Dubai, BzAnalytics Information Technology. Our primary
+            goals and objectives - as we live in the &quot;Experience
+            Economy&quot; brand loyalty is increasingly becoming a thing of the
+            past. We have been evolving with complex business issues is a key
+            market differentiator.
+          </p>
 
-                        {/* Signature */}
-                        <div className="h-16 md:h-24 w-48 md:w-64 relative">
-                            <Image
-                                src="/signature.png"
-                                alt="CEO Signature"
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="mt-2">
-                        <p className="font-bold text-lg">Beegum Pameela - CEO, BzAnalytics</p>
-                    </div>
-                </motion.div>
+          {/* Signature & Profile Area */}
+          <div className="mt-4 flex flex-wrap items-center gap-6">
+            {/* Profile Picture Placeholder */}
+            <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-orange-500 p-0.5">
+              <Image
+                src="/ceo-photo.png"
+                alt="Beegum Pameela"
+                fill
+                className="rounded-full object-cover"
+              />
             </div>
 
-            {/* Bottom floating elements */}
-            <div className="fixed bottom-12 left-10 z-50">
-                <div className="px-5 py-2.5 border border-white/30 text-[10px] font-bold uppercase tracking-[0.2em] cursor-pointer hover:bg-white hover:text-black transition-all">
-                    Light/Dark
-                </div>
+            {/* Signature */}
+            <div className="relative h-16 w-48 md:h-24 md:w-64">
+              <Image
+                src="/signature.png"
+                alt="CEO Signature"
+                fill
+                className="object-contain"
+              />
             </div>
+          </div>
 
-            <div className="fixed bottom-10 right-10 z-50">
-                <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center border border-white/20 cursor-pointer shadow-black shadow-2xl hover:scale-105 transition-transform group">
-                    <div className="w-14 h-14 rounded-full bg-zinc-900/50 flex items-center justify-center border border-white/5">
-                        {/* WhatsApp Icon */}
-                        <svg className="w-7 h-7 text-[#c17f45]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-2.32 0-4.519.903-6.16 2.544-1.64 1.64-2.544 3.839-2.544 6.159 0 1.258.267 2.479.791 3.597l-.025.049-1.096 4.004 4.1-.1.05-.025a8.6 8.6 0 003.58 1.18c2.321 0 4.52-.904 6.161-2.545a8.7 8.7 0 002.544-6.16c0-2.32-.903-4.519-2.544-6.159a8.68 8.68 0 00-6.161-2.544zM12 4c2.903 0 5.619 1.134 7.643 3.161 2.028 2.028 3.161 4.743 3.161 7.643 0 2.903-1.133 5.619-3.161 7.642-2.024 2.023-4.74 3.162-7.643 3.162-1.571 0-3.085-.348-4.444-1.0 l-5.122 1.393L3.89 20.93a10.6 10.6 0 01-1.89-6.126c0-2.903 1.133-5.619 3.161-7.643 2.025-2.028 4.741-3.161 7.643-3.161z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+          <div className="mt-2">
+            <p className="text-lg font-bold">
+              Beegum Pameela - CEO, BzAnalytics
+            </p>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom floating elements */}
+      <div className="fixed bottom-12 left-10 z-50">
+        <div
+          onClick={() =>
+            mounted && setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+          }
+          className="cursor-pointer border border-white/30 px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] uppercase transition-all hover:bg-white hover:text-black dark:border-white/30 dark:hover:bg-white dark:hover:text-black"
+        >
+          {mounted && resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+        </div>
+      </div>
+
+      <div className="fixed right-10 bottom-10 z-50 flex flex-col items-center gap-4">
+        <button
+          onClick={scrollToTop}
+          className="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c17f45] bg-white text-[#c17f45] shadow-2xl shadow-black transition-colors hover:scale-105 hover:bg-[#c17f45] hover:text-white dark:bg-black dark:hover:text-black"
+        >
+          <ArrowUp className="h-6 w-6 transition-transform group-hover:-translate-y-1" />
+        </button>
+        <div className="group flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border border-black/20 bg-white shadow-2xl shadow-black transition-transform hover:scale-105 dark:border-white/20 dark:bg-black">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white dark:bg-black">
+            <FaWhatsapp className="text-2xl text-orange-500" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -1,166 +1,179 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu } from "lucide-react";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Menu } from 'lucide-react';
 
 const NAV_LINKS = [
-    "Home",
-    "About Us",
-    "Services",
-    "Success Stories",
-    "Blogs",
-    "Careers",
-    "Contact Us",
+  'Home',
+  'About Us',
+  'Services',
+  'Success Stories',
+  'Blogs',
+  'Careers',
+  'Contact Us',
 ];
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <nav className="relative z-[100] w-full flex items-center justify-between pl-6 md:pl-12 pr-4 md:pr-6 py-4 bg-black text-white h-[90px] border-b border-white/5">
-            {/* Left side: Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer h-10 md:h-12">
-                <Image
-                    src="/logo.png"
-                    alt="Logo"
-                    width={180}
-                    height={48}
-                    className="h-full w-auto object-contain"
-                    priority
-                />
-            </Link>
+  return (
+    <nav className="relative z-[100] flex h-[90px] w-full items-center justify-between border-b border-white/5 bg-black py-4 pr-4 pl-6 text-white transition-colors duration-300 md:pr-6 md:pl-12">
+      {/* Left side: Logo */}
+      <Link
+        href="/"
+        className="flex h-10 flex-shrink-0 cursor-pointer items-center md:h-12"
+      >
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={180}
+          height={48}
+          className="h-full w-auto object-contain invert-0 transition-all"
+          priority
+        />
+      </Link>
 
-            {/* Middle: Navigation Links (Desktop) */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-5 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-                {NAV_LINKS.map((link) => (
-                    <div key={link} className="flex items-center gap-2">
-                        <Link
-                            href="#"
-                            className="text-[14px] font-semibold text-white/80 hover:text-white transition-colors"
-                        >
-                            {link}
-                        </Link>
-                    </div>
-                ))}
-
-                {/* Language Selector */}
-                <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity ml-2">
-                    <div className="w-5 h-5 rounded-full overflow-hidden shrink-0 flex items-center justify-center bg-zinc-800">
-                        <img
-                            src="https://flagcdn.com/w40/us.png"
-                            alt="EN"
-                            className="w-full h-full object-cover scale-150"
-                        />
-                    </div>
-                    <span className="text-[14px] font-semibold">EN</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white mt-0.5"
-                    >
-                        <path d="m6 9 6 6 6-6" />
-                    </svg>
-                </div>
-            </div>
-
-            {/* Right side: CTA (Desktop & Semi-Mobile) */}
-            <div className="hidden sm:flex items-center">
-                <Link
-                    href="#"
-                    className="flex items-center justify-center px-6 md:px-10 py-3 md:py-4 bg-black border border-white/20 text-white text-[13px] md:text-[15px] font-semibold hover:bg-white hover:text-black transition-all duration-300"
-                >
-                    Schedule a consultation
-                </Link>
-            </div>
-
-            {/* Mobile Menu Icon */}
-            <div
-                className="lg:hidden flex items-center text-white cursor-pointer p-2 hover:bg-white/10 rounded-full transition-colors"
-                onClick={() => setIsOpen(true)}
+      {/* Middle: Navigation Links (Desktop) */}
+      <div className="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-4 whitespace-nowrap lg:flex xl:gap-5">
+        {NAV_LINKS.map((link) => (
+          <div key={link} className="flex items-center gap-2">
+            <Link
+              href="#"
+              className="text-[14px] font-semibold text-white/80 transition-colors hover:text-white"
             >
-                <Menu size={28} />
-            </div>
+              {link}
+            </Link>
+          </div>
+        ))}
 
-            {/* Mobile Sidebar Navigation */}
-            <AnimatePresence>
-                {isOpen && (
-                    <>
-                        {/* Overlay */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsOpen(false)}
-                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[110]"
-                        />
+        {/* Language Selector */}
+        <div className="ml-2 flex cursor-pointer items-center gap-1.5 transition-opacity hover:opacity-80">
+          <div className="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full bg-zinc-800">
+            <Image
+              src="https://flagcdn.com/w40/us.png"
+              alt="EN"
+              width={40}
+              height={30}
+              unoptimized
+              className="h-full w-full scale-150 object-cover"
+            />
+          </div>
+          <span className="text-[14px] font-semibold">EN</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mt-0.5 text-white transition-colors duration-300"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </div>
+      </div>
 
-                        {/* Sidebar */}
-                        <motion.div
-                            initial={{ x: "100%" }}
-                            animate={{ x: 0 }}
-                            exit={{ x: "100%" }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0a0a0a] border-l border-white/10 z-[120] p-8 flex flex-col"
-                        >
-                            <div className="flex items-center justify-between mb-12">
-                                <Image
-                                    src="/logo.png"
-                                    alt="Logo"
-                                    width={120}
-                                    height={32}
-                                    className="h-8 w-auto object-contain"
-                                />
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
-                                >
-                                    <X size={24} />
-                                </button>
-                            </div>
+      {/* Right side: CTA (Desktop & Semi-Mobile) */}
+      <div className="hidden items-center sm:flex">
+        <Link
+          href="#"
+          className="flex items-center justify-center border border-white/20 bg-black px-6 py-3 text-[13px] font-semibold text-white transition-all duration-300 hover:bg-white hover:text-black md:px-10 md:py-4 md:text-[15px]"
+        >
+          Schedule a consultation
+        </Link>
+      </div>
 
-                            <div className="flex flex-col gap-6">
-                                {NAV_LINKS.map((link, i) => (
-                                    <motion.div
-                                        key={link}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: i * 0.05 }}
-                                    >
-                                        <Link
-                                            href="#"
-                                            onClick={() => setIsOpen(false)}
-                                            className="text-2xl font-bold hover:text-[#c17f45] transition-colors"
-                                        >
-                                            {link}
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                            </div>
+      {/* Mobile Menu Icon */}
+      <div
+        className="flex cursor-pointer items-center rounded-full p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
+        onClick={() => setIsOpen(true)}
+      >
+        <Menu size={28} />
+      </div>
 
-                            <div className="mt-auto flex flex-col gap-6">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20">
-                                        <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-full h-full object-cover" />
-                                    </div>
-                                    <span className="font-bold">English (US)</span>
-                                </div>
-                                <button className="w-full py-4 bg-[#c17f45] text-black font-extrabold rounded-lg uppercase tracking-widest text-sm shadow-xl shadow-orange-950/20">
-                                    Consultation
-                                </button>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
-        </nav>
-    );
+      {/* Mobile Sidebar Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-[110] bg-black/80 backdrop-blur-sm"
+            />
+
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 z-[120] flex h-full w-[85%] max-w-sm flex-col border-l border-white/10 bg-[#0a0a0a] p-8"
+            >
+              <div className="mb-12 flex items-center justify-between">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto object-contain invert-0 transition-all"
+                />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-full p-2 text-white transition-colors hover:bg-white/10"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.div
+                    key={link}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <Link
+                      href="#"
+                      onClick={() => setIsOpen(false)}
+                      className="text-2xl font-bold text-white transition-colors hover:text-[#c17f45]"
+                    >
+                      {link}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-auto flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="h-6 w-6 overflow-hidden rounded-full border border-white/20">
+                    <Image
+                      src="https://flagcdn.com/w40/us.png"
+                      alt="EN"
+                      width={40}
+                      height={30}
+                      unoptimized
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <span className="font-bold text-white">English (US)</span>
+                </div>
+                <button className="w-full rounded-lg bg-[#c17f45] py-4 text-sm font-extrabold tracking-widest text-black uppercase shadow-xl shadow-orange-950/20">
+                  Consultation
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
 }
