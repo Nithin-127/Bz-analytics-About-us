@@ -28,16 +28,28 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative mx-auto h-[400px] w-full max-w-[600px] md:h-[500px] lg:mx-0 lg:h-[600px]"
+          className="relative mx-auto w-full max-w-[600px] lg:mx-0 lg:h-[600px]"
         >
-          {/* Main Image */}
-          <div className="relative h-full w-full overflow-hidden rounded-[4px] shadow-2xl">
+          {/* Top Right / Main Image on Mobile */}
+          <div className="relative z-10 w-full overflow-hidden rounded-[4px] shadow-2xl lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-[80%]">
             <Image
-              src="/about-main.png"
-              alt="About BzAnalytics"
-              fill
-              className="object-contain lg:object-cover"
+              src="/about-3-2.jpg"
+              alt="About BzAnalytics Main"
+              width={400}
+              height={496}
+              className="h-auto w-full object-cover lg:h-full"
               priority
+            />
+          </div>
+
+          {/* Bottom Left Image (Desktop Only) */}
+          <div className="hidden lg:block absolute -bottom-1 left-0 z-20 w-[50%] md:-bottom-2 lg:-bottom-3 overflow-hidden rounded-[4px] shadow-2xl">
+            <Image
+              src="/about-3-1.jpg"
+              alt="About BzAnalytics Secondary"
+              width={290}
+              height={316}
+              className="h-auto w-full object-cover"
             />
           </div>
         </motion.div>

@@ -7,15 +7,14 @@ export default function PartnerSection() {
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:px-12 lg:px-24">
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-left text-2xl leading-tight font-bold text-[#c17f45] sm:text-3xl md:text-4xl lg:text-[48px]"
-        >
-          BzAnalytics Serves As Your Digital Partner
-        </motion.h2>
-
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="text-left text-2xl leading-tight font-bold text-[#E65100] sm:text-3xl md:text-4xl lg:text-[48px]"
+>
+  BzAnalytics Serves As Your Digital Partner
+</motion.h2>
         {/* Content Area */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
